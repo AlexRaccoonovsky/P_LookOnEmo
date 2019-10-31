@@ -1,0 +1,9 @@
+NAME: Look on emotions (LookOnEmo)
+Motto: Let's look on emotions* of historical data.  
+Target: Take from historical data next list of values:
+1. Volume of sample
+
+_____
+* - Value Positive Emotions (PosEmo) is top shadow of Japan Stock Candles, 
+    Value Negative Emotions (NegEmo) is bottom shadow of Japan Stock Candles. 
+		
