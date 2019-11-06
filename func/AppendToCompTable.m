@@ -9,5 +9,6 @@ CompTable=load(FullPatch,'CompTable');
 % Evaluating PosEmo 
 CompTable.CompTable.PosEmo=CompTable.CompTable.HP-CompTable.CompTable.OP;
 CompTable.CompTable.NegEmo=CompTable.CompTable.OP-CompTable.CompTable.LP;
+% Result
 CompTableAppend = CompTable.CompTable;
 
