@@ -1,0 +1,3 @@
+function ResultValidation=DateRangeIsValid(StringCompTable)
+
+ResultValidation=true;
