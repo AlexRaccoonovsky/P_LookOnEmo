@@ -4,11 +4,12 @@ function CompTableAppend=AppendToCompTable(InitCellArray)
 
 % String of full path to file
 FullPatch=strcat(InitCellArray{1,1},InitCellArray{1,2});
-% load Complex Table data
+% load data from Complex Table
 CompTable=load(FullPatch,'CompTable');
-% Evaluating PosEmo 
+% Evaluating PosEmo & NegEmo 
 CompTable.CompTable.PosEmo=CompTable.CompTable.HP-CompTable.CompTable.OP;
 CompTable.CompTable.NegEmo=CompTable.CompTable.OP-CompTable.CompTable.LP;
 % Result
 CompTableAppend = CompTable.CompTable;
+%CompTableAppend = table2struct(CompTableAppend);
 

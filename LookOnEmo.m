@@ -8,4 +8,4 @@ CompTableAppend=AppendToCompTable(InitCellArray);
 %% Forming cell array which consist of parameters for filtering
 FormingIncludeParam;
 %% Filtering Sample
-FilterSampleCompTable=FilterSample(CompTableAppend,IncludeParam);
+FilteredSampleCompTa5ble=FilterSample(CompTableAppend,IncludeParam);
