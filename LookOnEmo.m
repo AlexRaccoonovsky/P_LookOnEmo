@@ -7,5 +7,5 @@ load InitCellArray.mat;
 CompTableAppend=AppendToCompTable(InitCellArray);
 %% Forming cell array which consist of parameters for filtering
 FormingIncludeParam;
-%% Filtering Sample
-FilteredSampleCompTable=FilterSample(CompTableAppend,IncludeParam);
+%% Forming Table with validation strings
+FilteredSample=FilteringCompTable(CompTableAppend,IncludeParam);
