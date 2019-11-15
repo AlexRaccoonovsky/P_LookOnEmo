@@ -3,10 +3,9 @@ function FilteredSample=FilteringCompTable(CompTableAppend,IncludeParam)
  StartPointString=num2str(StartPoint);
  StartPointDTF = datetime(StartPointString,'InputFormat','yyyyMMdd');
  
- FinishPoint = IncludeParam{2,1}.FinishDate(2);
+ FinishPoint = IncludeParam{2,1}.FinishDate(3);
  FinishPointString=num2str(FinishPoint)
- FinishPointDTF = datetime(FinishPointString,'InputFormat','yyyyMMdd');
+ FinishPointDTF = datetime(FinishPointString,'InputFormat','yyyyMMdd')
  
- 
- tf = find(CompTableAppend.Date>=StartPointDTF & CompTableAppend.Date<=FinishPointDTF);
+ tf = find(CompTableAppend.Date>=StartPointDTF & CompTableAppend.Date<=FinishPointDTF)
  FilteredSample= tf
