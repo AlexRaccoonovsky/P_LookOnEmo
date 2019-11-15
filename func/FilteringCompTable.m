@@ -1,5 +1,5 @@
 function FilteredSample=FilteringCompTable(CompTableAppend,IncludeParam)
- StartPoint = IncludeParam{2,1}.StartDate(2);
+ StartPoint = IncludeParam{2,1}.StartDate(3);
  StartPointString=num2str(StartPoint);
  StartPointDTF = datetime(StartPointString,'InputFormat','yyyyMMdd');
  
