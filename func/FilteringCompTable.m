@@ -6,6 +6,7 @@ StageOneFilteredSample = FilteringStageOne(CompTableAppend,IncludeParam);
 %% Stage 2. Filtering result data of previous stage by Month Day
 StageTwoFilteredSample = FilteringStageTwo(StageOneFilteredSample,IncludeParam);
 
+
 FilteredSample = StageTwoFilteredSample;
  
 % Subfunction of Stage One 
@@ -32,17 +33,28 @@ FilteredSample = StageTwoFilteredSample;
             FinishPointDTF = datetime(FinishPointCurrentStr,'InputFormat','yyyyMMdd');
             % Find # valid rows of CompTableAppend in CurrentIntervalDate
             ValidNumRows = find(CompTableAppend.Date>=StartPointDTF & CompTableAppend.Date<=FinishPointDTF)
-            ArrayOfValidNumRows = [ArrayOfValidNumRows; ValidNumRows]
+            ArrayOfValidNumRows = [ArrayOfValidNumRows; ValidNumRows];
         end
      % Filtering sample after stage one
-     StageOneFilteredSample= CompTableAppend(ArrayOfValidNumRows,:)
+     StageOneFilteredSample= CompTableAppend(ArrayOfValidNumRows,:);
      
 % Subfunction of Stage Two
 function StageTwoFilteredSample = FilteringStageTwo(StageOneFilteredSample,IncludeParam)
+    % Initialize Array with Valid Rows on stage 2
+    ValidNumRows = [];
     % Extract Month Day from StageOneFilteredSample
-    MonthDayArray=day(StageOneFilteredSample.Date)
+    MonthDayArray=day(StageOneFilteredSample.Date);
     % Extract valid Month Days from IncludeParam
     ValidMonthDays=IncludeParam{3,1};
-    ValidNumRows = find(MonthDayArray == ValidMonthDays)
-    StageTwoFilteredSample = ValidNumRows
+    % Quantity of Valid Day
+    QuanOfValidDays = size(ValidMonthDays);
+    % Finding rows with Valid Days of Month
+    for CurMonthDay = 1:1:QuanOfValidDays(1,2)
+        ValidNumRowsCur = find(MonthDayArray==ValidMonthDays(CurMonthDay)); 
+        ValidNumRows = [ValidNumRows;ValidNumRowsCur];
+    end
+    % Sorting number of rows with valid rows
+    ValidNumRows = sort (ValidNumRows);
+    % Extract filtered data from data of stage 1
+    StageTwoFilteredSample = StageOneFilteredSample(ValidNumRows,:);
      
