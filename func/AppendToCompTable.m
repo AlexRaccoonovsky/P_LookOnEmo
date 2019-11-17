@@ -9,6 +9,7 @@ CompTable=load(FullPatch,'CompTable');
 % Evaluating PosEmo 
 CompTable.CompTable.PosEmo=CompTable.CompTable.HP-CompTable.CompTable.OP;
 CompTable.CompTable.NegEmo=CompTable.CompTable.OP-CompTable.CompTable.LP;
+CompTable.CompTable.Weekday=weekday(CompTable.CompTable.Date,'long')
 % Result
 CompTableAppend = CompTable.CompTable;
 
