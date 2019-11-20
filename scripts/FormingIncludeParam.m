@@ -2,8 +2,8 @@
 %% Flag
 IncludeParam{1,1}='Active';
 %% Including Date in Sample
-IncludeParam{2,1}.StartDate =  [20080604 20100605 20150605];
-IncludeParam{2,1}.FinishDate = [20100604 20150605 20190914];
+IncludeParam{2,1}.StartDate =  [20080604 20090604];
+IncludeParam{2,1}.FinishDate = [20090604 20190914];
 %% Including month day in a sample
 IncludeParam{3,1}=[1:31];
 %% Including week day in a sample
