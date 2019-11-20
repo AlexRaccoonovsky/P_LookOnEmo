@@ -8,11 +8,11 @@ StageTwoFilteredSample = FilteringStageTwo(StageOneFilteredSample,IncludeParam);
 %% Stage 3. Filtering result data of previous stage by Week Day
 StageThreeFilteredSample = FilteringStageThree(StageTwoFilteredSample,IncludeParam);
 %% Stage 4. Filtering result data of previous stage by Time
-%StageFourSample = FilteringStageFour(StageThreeFilteredSample,IncludeParam);
+StageFourSample = FilteringStageFour(StageThreeFilteredSample,IncludeParam);
 
 
 
-FilteredSample = StageThreeFilteredSample;
+FilteredSample = StageFourSample;
  
 % Subfunction of Stage One 
  function StageOneFilteredSample=FilteringStageOne(CompTableAppend,IncludeParam)
@@ -53,7 +53,7 @@ function StageTwoFilteredSample = FilteringStageTwo(StageOneFilteredSample,Inclu
     ValidMonthDays=IncludeParam{3,1};
     % Quantity of Valid Day
     QuanOfValidDays = size(ValidMonthDays);
-    % Finding rows with Valid Days of Month
+    % Finding rows with Valid Days of Month[]
     for CurMonthDay = 1:1:QuanOfValidDays(1,2)
         ValidNumRowsCur = find(MonthDayArray==ValidMonthDays(CurMonthDay)); 
         ValidNumRows = [ValidNumRows;ValidNumRowsCur];
@@ -85,7 +85,38 @@ function StageThreeFilteredSample = FilteringStageThree(StageTwoFilteredSample,I
      StageThreeFilteredSample = StageTwoFilteredSample(ValidNumRows,:);
      
 % Subfunction of stage Four
-%function StageFourSample = FilteringStageFour(StageThreeFilteredSample,IncludeParam)
+function StageFourSample = FilteringStageFour(StageThreeFilteredSample,IncludeParam)
+    % Initialization array of valid rows
+     ValidNumRows=[];
+     % Extracting Start & Finish Points of Time Interval & modification to
+     % TimeFormat
+     % Extract quantity interval from StartTime
+     QuantIntervals = size(IncludeParam{5,1}.StartTime);
+     % Extract & converting Time Intervals Arrays to Serial Date Format (SDF)
+     StartPointDoub=char(IncludeParam{5,1}.StartTime);
+     StartPointsOfTime = string(IncludeParam{5,1}.StartTime);
+     FinishPointsOfTime = string(IncludeParam{5,1}.FinishTime);
+     LimitsOfTime = [StartPointsOfTime; FinishPointsOfTime];
+     LimitsOfTimeSDF=rem(datenum(datetime(LimitsOfTime,'InputFormat','HHmmss')),1);
+     % Converting StageThreeFilteredSample.Time to SDF-format
+     TimeForFiltStr=datestr(StageThreeFilteredSample.Time,'HH:MM:SS');
+     TimeInNum = rem(datenum(TimeForFiltStr,'HH:MM:SS'),1);
+     % Time limits validation 
+     for CurrTimeInterval=1:1:QuantIntervals(1,2)
+         % Found Rows
+         CurrValidNumRows = find(TimeInNum>=LimitsOfTimeSDF(1,CurrTimeInterval)&...
+                                TimeInNum<=LimitsOfTimeSDF(2,CurrTimeInterval));...
+         % Appending to ValidNumRows
+         ValidNumRows=[ValidNumRows; CurrValidNumRows];
+         
+     end
+     
+         ValidNumRows = sort (ValidNumRows);
+     % Extract filtered data from data of stage 1
+     StageFourSample =  TimeInNum%StageThreeFilteredSample(ValidNumRows,:);
     
+     
+     
+     
 
      
