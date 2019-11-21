@@ -2,8 +2,8 @@
 %% Flag
 IncludeParam{1,1}='Active';
 %% Including Date in Sample
-IncludeParam{2,1}.StartDate =  [20080604 20090604];
-IncludeParam{2,1}.FinishDate = [20090604 20190914];
+IncludeParam{2,1}.StartDate =  [20080604 20090605 20100915 20110915];
+IncludeParam{2,1}.FinishDate = [20090604 20100914 20110914 20190914];
 %% Including month day in a sample
 IncludeParam{3,1}=[1:31];
 %% Including week day in a sample
@@ -12,5 +12,5 @@ IncludeParam{3,1}=[1:31];
 %IncludeParam{4,1}=["Monday" "Tuesday" ];
 IncludeParam{4,1}=[1:7];
 %% Including Time in Sample
-IncludeParam{5,1}.StartTime =  [100000];
-IncludeParam{5,1}.FinishTime = [234500];
+IncludeParam{5,1}.StartTime =  ["000000" "090000" "121500"];
+IncludeParam{5,1}.FinishTime = ["084500" "120000" "234500"];

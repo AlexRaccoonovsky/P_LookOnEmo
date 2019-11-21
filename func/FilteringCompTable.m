@@ -4,15 +4,13 @@ function FilteredSample=FilteringCompTable(CompTableAppend,IncludeParam)
 %% Stage 1. Filtering data by Date Interval
 StageOneFilteredSample = FilteringStageOne(CompTableAppend,IncludeParam);
 %% Stage 2. Filtering result data of previous stage by Month Day
-%StageTwoFilteredSample = FilteringStageTwo(StageOneFilteredSample,IncludeParam);
+StageTwoFilteredSample = FilteringStageTwo(StageOneFilteredSample,IncludeParam);
 %% Stage 3. Filtering result data of previous stage by Week Day
-%StageThreeFilteredSample = FilteringStageThree(StageTwoFilteredSample,IncludeParam);
+StageThreeFilteredSample = FilteringStageThree(StageTwoFilteredSample,IncludeParam);
 %% Stage 4. Filtering result data of previous stage by Time
-%StageFourSample = FilteringStageFour(StageThreeFilteredSample,IncludeParam);
+StageFourSample = FilteringStageFour(StageThreeFilteredSample,IncludeParam);
 
-
-
-FilteredSample = StageOneFilteredSample;
+FilteredSample = StageFourSample;
  
 % Subfunction of Stage One 
  function StageOneFilteredSample=FilteringStageOne(CompTableAppend,IncludeParam)
@@ -39,11 +37,11 @@ FilteredSample = StageOneFilteredSample;
             % Find # valid rows of CompTableAppend in CurrentIntervalDate
             ValidNumRows = find(CompTableAppend.Date>=StartPointDTF &...
                                 CompTableAppend.Date<=FinishPointDTF);...
-            ArrayOfValidNumRows = [ArrayOfValidNumRows; ValidNumRows]
+            ArrayOfValidNumRows = [ArrayOfValidNumRows; ValidNumRows];
         end
      % Filtering sample after stage one
 
-     StageOneFilteredSample=ValidNumRows;%CompTableAppend(ArrayOfValidNumRows,:);
+     StageOneFilteredSample=CompTableAppend(ArrayOfValidNumRows,:);
 
      % Subfunction of Stage Two
 function StageTwoFilteredSample = FilteringStageTwo(StageOneFilteredSample,IncludeParam)
@@ -58,7 +56,7 @@ function StageTwoFilteredSample = FilteringStageTwo(StageOneFilteredSample,Inclu
     % Finding rows with Valid Days of Month[]
     for CurMonthDay = 1:1:QuanOfValidDays(1,2)
         ValidNumRowsCur = find(MonthDayArray==ValidMonthDays(CurMonthDay)); 
-        ValidNumRows = [ValidNumRows;ValidNumRowsCur]
+        ValidNumRows = [ValidNumRows;ValidNumRowsCur];
     end
     % Sorting number of rows with valid rows
     ValidNumRows = sort (ValidNumRows);
@@ -95,7 +93,6 @@ function StageFourSample = FilteringStageFour(StageThreeFilteredSample,IncludePa
      % Extract quantity interval from StartTime
      QuantIntervals = size(IncludeParam{5,1}.StartTime);
      % Extract & converting Time Intervals Arrays to Serial Date Format (SDF)
-     StartPointDoub=char(IncludeParam{5,1}.StartTime);
      StartPointsOfTime = string(IncludeParam{5,1}.StartTime);
      FinishPointsOfTime = string(IncludeParam{5,1}.FinishTime);
      LimitsOfTime = [StartPointsOfTime; FinishPointsOfTime];
@@ -107,15 +104,13 @@ function StageFourSample = FilteringStageFour(StageThreeFilteredSample,IncludePa
      for CurrTimeInterval=1:1:QuantIntervals(1,2)
          % Found Rows
          CurrValidNumRows = find(TimeInNum>=LimitsOfTimeSDF(1,CurrTimeInterval)&...
-                                TimeInNum<=LimitsOfTimeSDF(2,CurrTimeInterval));...
+                                 TimeInNum<=LimitsOfTimeSDF(2,CurrTimeInterval));...
          % Appending to ValidNumRows
          ValidNumRows=[ValidNumRows; CurrValidNumRows];
-         
      end
-     
          ValidNumRows = sort (ValidNumRows);
      % Extract filtered data from data of stage 1
-     StageFourSample =  TimeInNum;%StageThreeFilteredSample(ValidNumRows,:);
+     StageFourSample = StageThreeFilteredSample(ValidNumRows,:);
     
      
      
