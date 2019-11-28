@@ -8,8 +8,15 @@ FullPatch=strcat(InitCellArray{1,1},InitCellArray{1,2});
 CompTable=load(FullPatch,'CompTable');
 % Evaluating PosEmo 
 CompTable.CompTable.PosEmo=CompTable.CompTable.HP-CompTable.CompTable.OP;
+% Evaluating PosEmo (PerCent) relatively OP
+CompTable.CompTable.PosEmoRel=(CompTable.CompTable.PosEmo*100)./CompTable.CompTable.OP;
+% Evaluating NegEmo 
 CompTable.CompTable.NegEmo=CompTable.CompTable.OP-CompTable.CompTable.LP;
-CompTable.CompTable.Weekday=weekday(CompTable.CompTable.Date,'long')
+% Evaluating NegEmo (PerCent) relatively OP
+CompTable.CompTable.NegEmoRel=(CompTable.CompTable.NegEmo*100)./CompTable.CompTable.OP;
+% Evaluating NegEmo (PerCent) relatively OP
+% Creating column Weekday
+CompTable.CompTable.Weekday=weekday(CompTable.CompTable.Date,'long');
 % Result
 CompTableAppend = CompTable.CompTable;
 
