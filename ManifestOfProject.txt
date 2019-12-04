@@ -1,7 +1,11 @@
 NAME: Look on emotions (LookOnEmo)
 Motto: Let's look on emotions* of historical data.  
-Target: Extract from historical data next list of values:
-1. Valid sample (Parameters of validation: 1. Date Intervals; 2. Month Days; 3. Week Days; 4. Time Intervals.)
+Target: 
+1. Calculate PosEmo, NegEmo columns;
+2. Extract from historical data valid sample (Validation parameters: 1. Date Intervals; 2. Month Days; 3. Week Days; 4. Time Intervals.);
+3. Plot next graphs:
+	a) Histograms for 
+
 
 _____
 * - Value Positive Emotions (PosEmo) is top shadow of Japan Stock Candles, 
