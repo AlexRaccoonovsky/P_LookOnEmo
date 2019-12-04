@@ -9,4 +9,5 @@ CompTableAppend=AppendToCompTable(InitCellArray);
 FormingIncludeParam;
 %% Filtering Sample
 FilteredSample=FilteringCompTable(CompTableAppend,IncludeParam);
-%% Testing plotting graph
+%% Treatment & Plotting Graph
+
