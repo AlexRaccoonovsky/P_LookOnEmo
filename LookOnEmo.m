@@ -1,4 +1,4 @@
-%% Main script file in Project_LookOnEmo 
+%%Main script file in Project_LookOnEmo 
 clc
 clear all
 load InitCellArray.mat;
@@ -8,4 +8,6 @@ CompTableAppend=AppendToCompTable(InitCellArray);
 %% Forming cell array which consist of parameters for filtering
 FormingIncludeParam;
 %% Filtering Sample
-FilteredSampleCompTable=FilterSample(CompTableAppend,IncludeParam);
+FilteredSample=FilteringCompTable(CompTableAppend,IncludeParam);
+%% Treatment & Plotting Graph
+TreatAndPlot;
