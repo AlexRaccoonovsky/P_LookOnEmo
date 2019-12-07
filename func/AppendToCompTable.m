@@ -30,8 +30,10 @@ DifValue=CompTable.CompTable.CP-CompTable.CompTable.OP;
 BodyColorColumn = FormingBodyColor(DifValue);
 % Transformate BodyColor column
      function BodyColorColumn=FormingBodyColor(DifValue)
+         % define const for Grey candle
          GreyDeltaConst=3;
-         SizeOfDifValue=size(DifValue)
+         SizeOfDifValue=size(DifValue);
+         % Forming BodyColorColumn
          for CurRow=1:1:SizeOfDifValue(1,1)
              if abs(DifValue(CurRow))<=GreyDeltaConst
                 BodyColorColumn(CurRow,1)="grey";

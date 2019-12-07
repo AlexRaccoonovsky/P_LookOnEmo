@@ -10,4 +10,4 @@ FormingIncludeParam;
 %% Filtering Sample
 FilteredSample=FilteringCompTable(CompTableAppend,IncludeParam);
 %% Treatment & Plotting Graph
-
+TreatAndPlot;
