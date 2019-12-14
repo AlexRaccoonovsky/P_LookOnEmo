@@ -12,8 +12,8 @@ IncludeParam{3,1}=[1:31];
 %IncludeParam{4,1}=["Monday" "Tuesday" ];
 IncludeParam{4,1}=[2 3 4 5 6];
 %% Including Time in Sample
-IncludeParam{5,1}.StartTime =  ["110000" "153000"];
-IncludeParam{5,1}.FinishTime = ["120000" "184500"];
+IncludeParam{5,1}.StartTime =  ["150000" ];
+IncludeParam{5,1}.FinishTime = ["150000" ];
 %% Definition ranges for plotting (absoluting values).
 %% Start point is included in range
 IncludeParam{6,2}.StartPointsOfRanges=[0 11 21 31 51 101];

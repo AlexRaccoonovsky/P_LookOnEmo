@@ -8,6 +8,8 @@ Target:
 	b) Pie chart for range's scattering of PosEmo;
 	c) Histograms for range's scattering of NegEmo (include type of candles);
 	d) Pie chart for range's scattering of NegEmo.
+4. Future Features:
+	- Create apart samples for PosEmo, NegEmo (??additional graph);
 
 
 _____
