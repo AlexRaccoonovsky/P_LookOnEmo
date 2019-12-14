@@ -1,26 +1,28 @@
 % Script of treatment & plotting
 % Plotting Candle graph for data from CompTableAppend
 ax1=subplot(3,2,1:2)
-highlow(CompTableAppend.HP,CompTableAppend.LP,CompTableAppend.CP,CompTableAppend.OP,'red');
+highlow(FilteredSample.HP,FilteredSample.LP,FilteredSample.CP,FilteredSample.OP,'red');
 
 ax2=subplot(3,2,3)
-[ScatterByRangePosEmoMatrix,RangesValueLegend]=CalcAbsoluteScatter(FilteredSample,IncludeParam{6,2},'PosEmo');
-bar(ScatterByRangePosEmoMatrix);
+[ScatterByRangePosEmoMatrix,RangesPosValueLegend]=CalcAbsoluteScatter(FilteredSample,IncludeParam{6,2},'PosEmo');
+SignsPos=categorical(RangesPosValueLegend);
+bar(SignsPos,ScatterByRangePosEmoMatrix);
 %legend(ax2,RangesValueLegend);
 
 ax3=subplot(3,2,4)
 QuanByRangePosEmoColumn=ScatterByRangePosEmoMatrix(1:end,1);
 pie3(QuanByRangePosEmoColumn);
-legend(ax3,RangesValueLegend);
+legend(ax3,RangesPosValueLegend);
 
 ax4=subplot(3,2,5)
-[ScatterByRangeNegEmoMatrix,RangesValueLegend]=CalcAbsoluteScatter(FilteredSample,IncludeParam{6,2},'NegEmo');
-bar(ScatterByRangeNegEmoMatrix);
+[ScatterByRangeNegEmoMatrix,RangesNegValueLegend]=CalcAbsoluteScatter(FilteredSample,IncludeParam{6,2},'NegEmo');
+SignsNeg=categorical(RangesNegValueLegend);
+bar(SignsNeg,ScatterByRangeNegEmoMatrix);
 
 ax5=subplot(3,2,6)
 QuanByRangeNegEmoColumn=ScatterByRangeNegEmoMatrix(1:end,1);
 pie3(QuanByRangeNegEmoColumn);
-legend(ax5,RangesValueLegend);
+legend(ax5,RangesNegValueLegend);
 
 
 %% Scattering by ranges ()
