@@ -4,7 +4,12 @@ Target:
 1. Calculate PosEmo, NegEmo columns;
 2. Extract from historical data valid sample (Validation parameters: 1. Date Intervals; 2. Month Days; 3. Week Days; 4. Time Intervals.);
 3. Plot next graphs:
-	a) Histograms for 
+	a) Histograms for range's scattering of PosEmo (include type of candles);
+	b) Pie chart for range's scattering of PosEmo;
+	c) Histograms for range's scattering of NegEmo (include type of candles);
+	d) Pie chart for range's scattering of NegEmo.
+4. Future Features:
+	- Create apart samples for PosEmo, NegEmo (??additional graph);
 
 
 _____
